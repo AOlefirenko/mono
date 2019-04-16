@@ -2,7 +2,7 @@
 
 &nbsp;
 
-Deploy a mono lambda microservice to AWS in seconds using [Serverless Components](https://github.com/serverless/components).
+Deploy a monolithic lambda microservice to AWS in seconds using [Serverless Components](https://github.com/serverless/components).
 
 &nbsp;
 
