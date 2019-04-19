@@ -1,4 +1,5 @@
-const { Component } = require('@serverless/components')
+const path = require('path')
+const { Component, utils } = require('@serverless/components')
 
 const generateName = (name = 'micro', stage = 'dev') => {
   const shortId = Math.random()
@@ -10,6 +11,12 @@ const generateName = (name = 'micro', stage = 'dev') => {
 
 class Mono extends Component {
   async default(inputs = {}) {
+    inputs.code = inputs.code ? path.resolve(process.cwd(), inputs.code) : process.cwd()
+
+    if (!(await utils.fileExists(path.join(inputs.code, 'index.js')))) {
+      throw Error(`no index.js file found in the directory "${inputs.code}"`)
+    }
+
     this.cli.status('Starting Deployment')
     const name = this.state.name || generateName(inputs.name, this.context.stage)
 

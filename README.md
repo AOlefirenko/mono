@@ -2,7 +2,9 @@
 
 &nbsp;
 
-Deploy a monolithic lambda app to AWS in seconds using [Serverless Components](https://github.com/serverless/components).
+Instantly deploy an http monolithic lambda app to AWS using [Serverless Components](https://github.com/serverless/components).
+
+It uses accelerated multipart uploads to s3, and layers for dependency management, which when combined speed up deployments tenfold! It's the fastest lambda deployment engine currently available, even with double/triple digit MB packages.
 
 &nbsp;
 
@@ -30,12 +32,11 @@ The directory should look something like this:
 
 
 ```
-|- serverless.yml
-|- .env         # your development AWS api keys
-|- .env.prod    # your production AWS api keys
-|- code
-  |- index.js
-  |- package.json # optional
+|- serverless.yml # required
+|- index.js       # required
+|- package.json   # optional
+|- .env           # your development AWS api keys
+|- .env.prod      # your production AWS api keys
 ```
 
 the `.env` files are not required if you have the aws keys set globally and you want to use a single stage, but they should look like this.
@@ -48,10 +49,24 @@ AWS_SECRET_ACCESS_KEY=XXX
 The `index.js` file should look something like this.
 
 ```js
-module.exports = async (req, context) => {
-  
-  return { statusCode: 200, body: 'Mono Serverless Component.' }
+module.exports = async (e, ctx, cb) => {
+  return { statusCode: 200, body: 'mono app deployed.' }
 }
+
+// you could also just return an object
+// which would return a 200 status by default
+// module.exports = () => ({ hello: 'world' })
+
+// or just a string
+// module.exports = () => 'success'
+
+// or a status code number
+// module.exports = () => 404 # not found!
+
+// you don't even need to export a function!
+// module.exports = ({ hello: 'world' }) # great for mocking!
+// module.exports = 'success'
+// module.exports = 500
 ```
 
 ### 3. Configure
@@ -68,7 +83,7 @@ mono:
   component: "@serverless/mono"
   inputs:
     name: my-mono-app
-    description: My Mono Microservice
+    description: My Mono App
     region: us-east-1
     memory: 128
     timeout: 10
@@ -77,7 +92,7 @@ mono:
     
     # the directory that contains the index.js file.
     # If not provided, the default is the current working directory
-    code: ./code
+    # code: ./code
 
 
 ```
@@ -85,30 +100,16 @@ mono:
 ### 4. Deploy
 
 ```console
-mono (master)$ components
+mono (master) ⚡️components
 
-  mono › outputs:
-  name:  'my-mono-app'
-  description:  'My Mono App'
-  memory:  128
-  timeout:  10
-  bucket:  undefined
-  shims:  []
-  handler:  'shim.handler'
-  runtime:  'nodejs8.10'
-  env: 
-    TABLE_NAME:  'my-table'
-  role: 
-    name:  'my-mono-microservice'
-    arn:  'arn:aws:iam::552760238299:role/my-mono-app'
-    service:  'lambda.amazonaws.com'
-    policy:  { arn: 'arn:aws:iam::aws:policy/AdministratorAccess' }
-  arn:  'arn:aws:lambda:us-east-1:552760238299:function:my-mono-app'
+  Mono › outputs:
+  url:  'https://bbhm8tk587.execute-api.us-east-1.amazonaws.com/dev/'
 
 
-  50s › dev › mono › done
+  7s › dev › Mono › done
 
-mono (master)$
+mono (master) ⚡️
+
 ```
 
 &nbsp;

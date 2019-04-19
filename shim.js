@@ -1,7 +1,10 @@
 const main = require('./index.js')
 
 module.exports.handler = async (e, ctx, cb) => {
-  const res = await main(e, ctx, cb)
+  let res = main
+  if (typeof main === 'function') {
+    res = await main(e, ctx, cb)
+  }
 
   if (typeof res === 'number') {
     return {
@@ -17,6 +20,9 @@ module.exports.handler = async (e, ctx, cb) => {
   }
 
   if (typeof res === 'object') {
+    if (typeof res.body === 'object') {
+      res.body = JSON.stringify(res.body)
+    }
     if (res.statusCode) {
       return res
     }
