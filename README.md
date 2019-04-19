@@ -54,7 +54,8 @@ module.exports = async (e, ctx, cb) => {
 }
 
 // you could also just return an object
-// which would return a 200 status by default
+// which would return it as body with
+// 200 status code by default
 // module.exports = () => ({ hello: 'world' })
 
 // or just a string
@@ -64,7 +65,7 @@ module.exports = async (e, ctx, cb) => {
 // module.exports = () => 404 # not found!
 
 // you don't even need to export a function!
-// module.exports = ({ hello: 'world' }) # great for mocking!
+// module.exports = { hello: 'world' } # great for mocking!
 // module.exports = 'success'
 // module.exports = 500
 ```
