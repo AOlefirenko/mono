@@ -100,15 +100,15 @@ mono:
 ### 4. Deploy
 
 ```console
-mono (master) ⚡️components
+mono (master)$ components
 
   Mono › outputs:
-  url:  'https://bbhm8tk587.execute-api.us-east-1.amazonaws.com/dev/'
+  url:  'https://bbhm7tk587.execute-api.us-east-1.amazonaws.com/dev/'
 
 
   7s › dev › Mono › done
 
-mono (master) ⚡️
+mono (master)$
 
 ```
 
