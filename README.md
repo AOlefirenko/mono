@@ -110,8 +110,9 @@ mono (master)$ components
   7s › dev › Mono › done
 
 mono (master)$
-
 ```
+
+All requests to this root url will be proxied directly to your lambda function, giving you full control of the http layer.
 
 &nbsp;
 
