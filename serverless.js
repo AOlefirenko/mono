@@ -44,7 +44,7 @@ class Mono extends Component {
       code: inputs.code,
       role: roleOutputs,
       handler: 'shim.handler',
-      shims: ['./shim.js'],
+      shims: [path.join(__dirname, 'shim.js')],
       env: inputs.env || {},
       bucket: name,
       region: inputs.region
