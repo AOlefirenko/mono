@@ -1,7 +1,7 @@
 const path = require('path')
 const { Component, utils } = require('@serverless/components')
 
-const generateName = (name = 'micro', stage = 'dev') => {
+const generateName = (name = 'mono', stage = 'dev') => {
   const shortId = Math.random()
     .toString(36)
     .substring(6)
@@ -37,7 +37,7 @@ class Mono extends Component {
 
     const lambdaInputs = {
       name,
-      description: inputs.description || 'Microservice Powered by Serverless Components',
+      description: inputs.description || 'Mono Lambda Powered by Serverless Components',
       memory: inputs.memory || 128,
       timeout: inputs.timeout || 10,
       runtime: 'nodejs8.10',
