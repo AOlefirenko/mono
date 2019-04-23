@@ -4,9 +4,14 @@
 
 &nbsp;
 
-Instantly deploy an http monolithic lambda app to AWS using [Serverless Components](https://github.com/serverless/components).
+Easily deploy monolithic web applications to AWS Lambda using this Component.
 
-It uses accelerated multipart uploads to s3, and layers for dependency management, which when combined speed up deployments tenfold! It's the fastest lambda deployment engine currently available, even with double/triple digit MB packages.
+### Features
+
+* Designed to make it easy to host pre-existing web frameworks (e.g. Express.js, Hapi) or any large web application on a single AWS Lambda Function.
+* Blazing Fast Uploads via AWS S3 Accelerated Transfer and Multi-Part.
+* Dependencies are automatically put in AWS Lambda Layers, reducing cold-start time and further reducing upload time.
+* Simple shim for receiving and responding to HTTP requests.
 
 &nbsp;
 
