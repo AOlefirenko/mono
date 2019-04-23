@@ -1,3 +1,5 @@
+![https://www.serverless.com](https://s3.amazonaws.com/assets.github.serverless/readme-serverless-mono-2.png)
+
 # mono
 
 &nbsp;
