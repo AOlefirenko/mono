@@ -4,7 +4,7 @@
 
 &nbsp;
 
-Easily deploy monolithic web applications to AWS Lambda using this Component.
+Easily host web frameworks and applications on a single AWS Lambda function using this [Serverless Component](https://www.github.com/serverless/components).
 
 ### Features
 
