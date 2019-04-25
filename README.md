@@ -69,10 +69,10 @@ module.exports = async (e, ctx, cb) => {
 // module.exports = () => 'success'
 
 // or a status code number
-// module.exports = () => 404 # not found!
+// module.exports = () => 404 // not found!
 
 // you don't even need to export a function!
-// module.exports = { hello: 'world' } # great for mocking!
+// module.exports = { hello: 'world' } // great for mocking!
 // module.exports = 'success'
 // module.exports = 500
 ```

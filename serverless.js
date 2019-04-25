@@ -81,7 +81,7 @@ class Mono extends Component {
     this.cli.outputs({
       url: apigOutputs.url
     })
-    return { url: apigOutputs.url, lambdaOutputs, apigOutputs }
+    return { url: apigOutputs.url }
   }
 
   async remove() {
