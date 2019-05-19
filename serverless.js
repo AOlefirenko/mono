@@ -69,7 +69,8 @@ class Mono extends Component {
       routes: {
         '{proxy+}': methods,
         '/': methods
-      }
+      },
+      region: inputs.region
     }
 
     this.cli.status('Deploying API Gateway')
